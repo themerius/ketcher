@@ -22,5 +22,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "prototype.js": "~1.7.0",
+    "raphael": "~1.4.7"
+  }
 }

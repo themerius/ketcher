@@ -1,0 +1,4 @@
+.DS_Store
+
+# Dependencies managed by bower
+lib/
