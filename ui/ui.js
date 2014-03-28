@@ -467,7 +467,7 @@ ui.updateMolecule = function (mol)
             ui.setZoomCentered(null, ui.render.getStructCenter());
         } catch (er)
         {
-            alert(er.message);
+            console.log(er.message);
         } finally
         {
             ui.hideDialog('loading');
@@ -503,7 +503,7 @@ ui.parseCTFile = function (molfile, check_empty_line)
         }
     } catch (er)
     {
-        alert("Error loading molfile.\n"+er.toString());
+        console.log("Error loading molfile.\n"+er.toString());
         return null;
     }
 };
@@ -1070,7 +1070,7 @@ ui.loadMolecule = function (mol_string, force_layout, check_empty_line, paste)
         {
             if (smiles != '')
             {
-                alert('SMILES is not supported in a standalone mode.');
+                console.log('SMILES is not supported in a standalone mode.');
             }
             return;
         }
@@ -1083,7 +1083,7 @@ ui.loadMolecule = function (mol_string, force_layout, check_empty_line, paste)
                 if (res.responseText.startsWith('Ok.'))
                     updateFunc.call(ui, ui.parseCTFile(res.responseText));
                 else if (res.responseText.startsWith('Error.'))
-                    alert(res.responseText.split('\n')[1]);
+                    console.log(res.responseText.split('\n')[1]);
                 else
                     throw new Error('Something went wrong' + res.responseText);
             }
@@ -1100,7 +1100,7 @@ ui.loadMolecule = function (mol_string, force_layout, check_empty_line, paste)
                 if (res.responseText.startsWith('Ok.'))
                     updateFunc.call(ui, ui.parseCTFile(res.responseText));
                 else if (res.responseText.startsWith('Error.'))
-                    alert(res.responseText.split('\n')[1]);
+                    console.log(res.responseText.split('\n')[1]);
                 else
                     throw new Error('Something went wrong' + res.responseText);
             }
@@ -1124,7 +1124,7 @@ ui.dearomatizeMolecule = function (mol_string, aromatize)
                 if (res.responseText.startsWith('Ok.')) {
                     ui.updateMolecule(ui.parseCTFile(res.responseText));
                 } else if (res.responseText.startsWith('Error.')) {
-                    alert(res.responseText.split('\n')[1]);
+                    console.log(res.responseText.split('\n')[1]);
                 } else {
                     throw new Error('Something went wrong' + res.responseText);
                 }
@@ -1335,7 +1335,7 @@ ui.onClick_CleanUp = function ()
         ui.loadMolecule(ms.saveMolecule(ui.ctab), true);
     } catch (er)
     {
-        alert("Molfile: " + er.message);
+        console.log("Molfile: " + er.message);
     }
 };
 
@@ -1351,7 +1351,7 @@ ui.onClick_Aromatize = function ()
         ui.dearomatizeMolecule(ms.saveMolecule(ui.ctab), true);
     } catch (er)
     {
-        alert("Molfile: " + er.message);
+        console.log("Molfile: " + er.message);
     }
 };
 
@@ -1367,7 +1367,7 @@ ui.onClick_Dearomatize = function ()
         ui.dearomatizeMolecule(ms.saveMolecule(ui.ctab), false);
     } catch (er)
     {
-        alert("Molfile: " + er.message);
+        console.log("Molfile: " + er.message);
     }
 };
 
@@ -1885,7 +1885,7 @@ ui.showSGroupProperties = function (id, tool, selection, onOk, onCancel)
 
             if (attrs.fieldName == '' || attrs.fieldValue == '')
             {
-                alert("Please, specify data field name and value.");
+                console.log("Please, specify data field name and value.");
                 ui.showDialog('sgroup_properties');
                 return;
             }
